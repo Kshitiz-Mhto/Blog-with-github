@@ -113,6 +113,7 @@ A centralized version control system has a single server that contains all the f
 The biggest `issue` with this structure is that everything is `stored on the centralized server`. If something went wrong with server, nobody can save their versioned changes, pull files or collaborate at all. If server get corrupted, you lose the entire history of the project except whatever single snapshots people happen to have on their local machines.
 
 <br/>
+
 ***
 
 <h1 style="border:0;font-weight:bold" align="center">Distributed Version Control Systems</h1>
