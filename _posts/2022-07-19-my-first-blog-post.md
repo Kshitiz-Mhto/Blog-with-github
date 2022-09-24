@@ -221,17 +221,18 @@ Checksumming mechanism used by GIT is called a SHA-1 hash. This is a 40-characte
 
 ## **States of Files**
 
-### - **Tracked**
+### - <u>**Tracked**</u>
 ```
 Git knows of it. like file in staging area and files those were present in the last commit or snapshot. They can be unmodifed, modified and staged.
 ```
+*COMMAND*: `git add <filename>` or `git add .`
 
 >And, file hello is under ``Changes not staged for commit` means the file `hello` is already the part of the previous commit that is modified.
 
 > Further, the file `mama` is under `Changes to be commited` means the changes are all good to go in the next commit or snapshot in the git project.
 
 
-### - **Untracked**
+### - <u>**Untracked**</u>
 
 ```
 Git doesn't knows of it. like files those are not present in last commit of the git project, these files in unstaged area.
@@ -256,5 +257,17 @@ Git doesn't knows of it. like files those are not present in last commit of the 
 ![alt status --short](./assets/fullstatus.png)
 ***
 
-## **Unstaging the staged files**
+## <u>**Unstaging the staged files**</u>
+
+|git rm --cached filename| git restore --statged / git restore -S filename|git reset HEAD filename|
+|:---:|:---:|:---:|
+|Basically, delete the file from git repo and make the file untracked| Basically, unstage your staged data/ files||
+|![alt git rm --cached](./assets/rmcached.png)|![alt git restore --staged](./assets/restore.png)| simple as `git restore -S`|
+
+> `git rm ` --> basically, removes the file existence from your system as well as from git repo.
+
+![alt git rm](./assets/gitrm.png)
+
+
+
 
