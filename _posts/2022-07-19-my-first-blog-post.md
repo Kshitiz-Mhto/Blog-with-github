@@ -26,12 +26,13 @@ Before we learn about `git`, let us get familier with `Version Control System`. 
 Lets break down the word `Version Control System` into 
 
 - Version ---> The state or the snapshot of particular instance of time of any matter.
-- Control ---> A mechanism {[a sort of ]}(#) that controls and manage the version history. 
-- System ---> We all know the organized or not sort of organized functioning being that combines above `TWO keyword` to work as a fully functioning as single unit.
+- Control ---> A mechanism [a sort of ] that controls and manage the version history. 
+- System ---> components that are organized for serving common purpose.
 
 Now, let's talk about the `Version Control` ie,
 ```
-The practice of tracking down or mapping the every change a developer made to a project from the begining to end of the project, Actually a project is not considered as finished. [About tools we will further look into in couple of minutes. OK]
+The practice of tracking down or mapping the every change a developer made to a project from the begining to end of the project, Actually a project is never considered as finished.
+It allow software teams track changes to the code, while enhancing communication and collaboration between team members [About tools we will further look into in couple of minutes. OK]
 ```
 <br>
 
@@ -241,10 +242,14 @@ Git doesn't knows of it. like files those are not present in last commit of the 
 >here, in above screenshot as we can observe file `hell` is under `untracked file` means the file `hell` is not part of the previous snapshots. 
 
 <br>
-<u>Trick-Status</u>
 
->`git status -s`<br>
->`git status --short`
+## <u>**Check the Status of files** </u>
+<u>Trick-Status</u>
+```
+git status -s
+or
+git status --short
+```
 
 ![alt status --short](./assets/status-s.png)
 <br>
@@ -261,13 +266,57 @@ Git doesn't knows of it. like files those are not present in last commit of the 
 
 |git rm --cached filename| git restore --statged / git restore -S filename|git reset HEAD filename|
 |:---:|:---:|:---:|
-|Basically, delete the file from git repo and make the file untracked| Basically, unstage your staged data/ files||
+|Basically, delete the file from git repo and make the file untracked| Basically, unstage your staged data/ files| ustage the staged files. Nowadays, `git restore` is preferred. |
 |![alt git rm --cached](./assets/rmcached.png)|![alt git restore --staged](./assets/restore.png)| simple as `git restore -S`|
 
 > `git rm ` --> basically, removes the file existence from your system as well as from git repo.
 
 ![alt git rm](./assets/gitrm.png)
 
+## <u>**Saving the changes in Git Repository**</U>
+*COMMAND* 
+```
+git commit
+```
+we also have some short hands for `git commit` like
+ > git commit -m "[your message]"
+ --> `git commit -m [message]` not need to write on editor, msg will be delivered automatically to the commit.
+ > git commit -a 
+ --> `git commit -a` basically open your default editor for developer, in order to provide additional info about the commit by developer in git history. Further, commit all changed files.
+ > git commit --interactive
+ --> provide interactive prompt for the commiting our changes.
 
+## <u>**Play with the history**</u>
+<br>
 
+> Showing the history of the commits.
 
+*COMMAND* 
+```
+git log 
+```
+**variation with `git log`**
+> `git log -p ` or `git log -p -n` where `n` be any number upto which you want to display the commits from latest to previous. Basically, limit the number of log entries displayed
+
+--> `-p` or `--patch` displays the difference made in that particular commit.
+
+![alt git commit -p -1](./assets/commitp.png)
+
+> `git log --stat` basically show the file , lines in those files which are changed also summary of the information at the end.
+
+![alt git log --stat](./assets/gitstat.png)
+
+> `git log --pretty=oneline` speaks itself
+
+![alt git log --pretty=oneline](./assets/pretty.png)
+
+> `git log --since=2.weeks` 
+
+![alt git log --since=1.days](./assets/since.png)
+
+<br>
+
+*If you want more*
+|git log|git log|
+|:---:|:---:|
+| ![alt table](./assets/table.png) | ![alt table](./assets/table1.png)|
