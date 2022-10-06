@@ -167,9 +167,10 @@ Git treat the data as stream of Snapshots. When we save or commit our changes, G
 
 **Some stuff about Git**
 
-```
+*CheckSum*
 
-CheckSum --> A mathematical value created using a cryptographic algorithm that is assigned to data and later used to test the data to verify that the data has not changed.s
+```
+A mathematical value created using a cryptographic algorithm that is assigned to data and later used to test the data to verify that the data has not changed.
 
 Git's checksums include meta data about the commit including the author, date, and the previous commit's SHA. Git assures the integrity of the data being stored by using checksums as identifiers.
 
@@ -228,7 +229,7 @@ Git knows of it. like file in staging area and files those were present in the l
 ```
 *COMMAND*: `git add <filename>` or `git add .`
 
->And, file hello is under ``Changes not staged for commit` means the file `hello` is already the part of the previous commit that is modified.
+>And, file hello is under ``Changes not staged for commit`  means the file `hello` is already the part of the previous commit that is modified.
 
 > Further, the file `mama` is under `Changes to be commited` means the changes are all good to go in the next commit or snapshot in the git project.
 
@@ -320,3 +321,72 @@ git log
 |git log|git log|
 |:---:|:---:|
 | ![alt table](./assets/table.png) | ![alt table](./assets/table1.png)|
+
+
+
+## **<u>Lets Play with Git config</u>**
+
+The global configuration can be found in `~/.config/git/config` or `~/.gitconfig` and local one can be found inside the `.git repository`
+
+*Lets display all the configuration for your git eco-system*
+` git config --global --list` - for global configuration.
+` git config --local --list`  - for local configuration.
+
+- *setting your global username and e-mail*
+`git config --global user.name <username>`
+`git config --global user.email <email>`
+
+- *setting your local username and e-mail*
+`git config user.name <username>`
+`git config user.email <email>`
+
+- *setting aliases*
+`git config --global alias.chk checkout` for global
+`git config alias.chk checkout` for local
+
+- *setting the color preference*
+`git config color.ui false` or `git config color.ui true`
+
+
+<div>
+    <h1>Git Internals</h1>
+</div>
+
+## Let's talk about git Objects.
+
+- Blob
+- Tree
+- Commit
+
+![alt object structure](./assets/objectPointer.png)
+
+```
+As we know, git can only work on those files or project that are known to git ie, Tracked files. For making a file tracked one, we need that file in staging area. When new files are tracked by staging them or existing files which are changed and placed in staging area, git actually create a blog object for each staged files. 
+Afterward, when we commit those changes git create tree and commit objects. 
+```
+
+*BLOB*
+
+> Staging the changes in the project compute the checksum for each file, stores the version of the files as `BLOB` and add those checksum to the staging area.
+
+> `Version of the files` means content of that particular version of the file.
+> Also Blob can also be refer as a file with SHA-1 checksum as a identifier.
+
+![alt blob](./assets/blob.png)
+
+*TREE*
+
+> When we commit the changes, git checksums each and every files in the project and stores them as a tree like structure as `TREE` object. A single tree object contains one or more entries, each of which is the SHA-1 hash of a blob or subtree with its associated mode, type, and filename.
+
+![alt tree](./assets/tree.png)
+
+*COMMIT*
+
+>Finally, git create `COMMIT` object that store the metadata of the snapshot like author, email, and so on as well as pointer to the previous commit.
+
+> Only the initial commit has pointer to the `root tree` object.
+
+![alt commit](./assets/commit.png)
+
+> After each commit, in every snapshot all three object are created and those files which are not changed, pointer are refering to the previous version of the unchanged files. Those files which are changed, pointer to that file refered as checksum is created new and refer to that new version of the file.
+
